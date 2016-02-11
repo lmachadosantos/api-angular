@@ -1,0 +1,6 @@
+.buildpath
+composer.lock
+.project
+.settings/
+vendor/
+.vagrant/

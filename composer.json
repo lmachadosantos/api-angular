@@ -1,0 +1,17 @@
+{
+	"name": "lmachadosantos/api-angular",
+	"author": {
+		"name": "Leandro Machado dos Santos",
+		"email": "lmachadosantos@icloud.com"
+	},
+	"require": {
+	    "respect/rest": "^0.6.0",
+	    "respect/relational": "^0.8.0",
+	    "respect/config": "^2.0"
+  	},
+	"autoload": {
+		"psr-4": {
+			"API\\": [ "src/" ]
+		}
+    }
+}
