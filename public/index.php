@@ -23,7 +23,7 @@ require_once (APPLICATION_PATH . 'vendor/autoload.php');
 $container = \API\Container::obtemInstancia();
 
 $mapper = $container->mapper;
-$mapper->entityNamespace = '\\API\\Entities\\';
+$mapper->entityNamespace = '\\API\\Entities';
 
 $router = $container->router;
 

@@ -6,11 +6,11 @@ class Usuario
 
     private $id;
 
-    public $login;
+    private $login;
 
     private $senha;
 
-    public $ativo;
+    private $ativo;
 
     private $criadoEm;
 

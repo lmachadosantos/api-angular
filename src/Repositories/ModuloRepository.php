@@ -17,9 +17,7 @@ class ModuloRepository implements Routable
     }
 
     public function get($id = null)
-    {
-        $resposta = new stdClass();
-        
+    {        
         if ($id) {
             $modulo = $this->mapper->modulo(array(
                 'id' => "{$id}",
@@ -31,9 +29,7 @@ class ModuloRepository implements Routable
             ))->fetchAll();
         }
         
-        $resposta->modulo = $modulo;
-        
-        return $resposta;
+        return $modulo;
     }
 
     public function post()
