@@ -8,11 +8,11 @@ class Sessao
 
     private $id;
 
-    private $usuarioId;
+    public $usuarioId;
 
-    private $dataHoraInicio;
+    public $dataHoraInicio;
 
-    private $dataHoraFim;
+    public $dataHoraFim;
 
     private $criadoEm;
 

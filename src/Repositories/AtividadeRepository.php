@@ -19,6 +19,8 @@ class AtividadeRepository implements Routable
 
     public function get($id = null)
     {
+        $resposta = new stdClass();
+        
         if ($id) {
             $atividade = $this->mapper->atividade(array(
                 'id' => "{$id}",
@@ -30,7 +32,9 @@ class AtividadeRepository implements Routable
             ))->fetchAll();
         }
         
-        return $atividade;
+        $resposta->atividade = $atividade;
+        
+        return $resposta;
     }
 
     public function post()

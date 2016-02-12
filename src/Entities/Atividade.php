@@ -6,11 +6,11 @@ class Atividade
 
     private $id;
 
-    private $moduloId;
+    public $moduloId;
 
-    private $titulo;
+    public $titulo;
 
-    private $descricao;
+    public $descricao;
 
     private $ativo;
 

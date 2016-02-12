@@ -6,11 +6,11 @@ class Modulo
 
     private $id;
 
-    private $titulo;
+    public $titulo;
 
-    private $descricao;
+    public $descricao;
 
-    private $ativo;
+    public $ativo;
 
     private $criadoEm;
 

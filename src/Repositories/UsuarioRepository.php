@@ -19,6 +19,8 @@ class UsuarioRepository implements Routable
 
     public function get($id = null)
     {
+        $resposta = new stdClass();
+        
         if ($id) {
             $usuario = $this->mapper->usuario(array(
                 'id' => "{$id}",
@@ -30,7 +32,9 @@ class UsuarioRepository implements Routable
             ))->fetchAll();
         }
         
-        return $usuario;
+        $resposta->usuario = $usuario;
+        
+        return $resposta;
     }
 
     public function post()
