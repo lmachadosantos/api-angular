@@ -15,7 +15,7 @@ class Usuario
     private $criadoEm;
 
     private $atualizadoEm;
-
+    
     private $excluido;
 
     public function __construct()
