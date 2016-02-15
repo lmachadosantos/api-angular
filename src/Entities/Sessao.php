@@ -6,7 +6,7 @@ use Exception;
 class Sessao
 {
 
-    private $id;
+    public $id;
 
     public $usuarioId;
 
@@ -14,11 +14,11 @@ class Sessao
 
     public $dataHoraFim;
 
-    private $criadoEm;
+    public $criadoEm;
 
-    private $atualizadoEm;
+    public $atualizadoEm;
 
-    private $excluido;
+    public $excluido;
 
     public function __construct()
     {

@@ -4,19 +4,19 @@ namespace API\Entities;
 class Usuario
 {
 
-    private $id;
+    public $id;
 
-    private $login;
+    public $login;
 
-    private $senha;
+    public $senha;
 
-    private $ativo;
+    public $ativo;
 
-    private $criadoEm;
+    public $criadoEm;
 
-    private $atualizadoEm;
+    public $atualizadoEm;
     
-    private $excluido;
+    public $excluido;
 
     public function __construct()
     {

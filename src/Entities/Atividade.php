@@ -4,15 +4,15 @@ namespace API\Entities;
 class Atividade
 {
 
-    private $id;
+    public $id;
 
-    public $moduloId;
+    private $moduloId;
 
     public $titulo;
 
     public $descricao;
 
-    private $ativo;
+    public $ativo;
 
     private $criadoEm;
 

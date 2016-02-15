@@ -18,18 +18,33 @@ class AtividadeRepository implements Routable
     }
 
     public function get($id = null)
-    {        
+    {           
         if ($id) {
-            $atividade = $this->mapper->atividade(array(
+            $stmt = $this->mapper->atividade(array(
                 'id' => "{$id}",
                 'excluido' => 0
-            ))->fetch();
+            ));
+            
+            if(isset($_GET['include'])) {
+                $include = $_GET['include'];
+                $atividade = $stmt->$include->fetch();
+            }else{
+                $atividade = $stmt->fetch();
+            }
+            
         } else {
-            $atividade = $this->mapper->atividade(array(
+            $stmt = $this->mapper->atividade(array(
                 'excluido' => 0
-            ))->fetchAll();
+            ));
+            
+            if(isset($_GET['include'])) {
+                $include = $_GET['include'];
+                $atividade = $stmt->$include->fetchAll();
+            }else{
+                $atividade = $stmt->fetchAll();
+            }
         }
-        
+
         return $atividade;
     }
 

@@ -4,7 +4,7 @@ namespace API\Entities;
 class Modulo
 {
 
-    private $id;
+    public $id;
 
     public $titulo;
 

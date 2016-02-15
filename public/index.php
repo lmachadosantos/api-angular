@@ -20,78 +20,56 @@ switch (APPLICATION_ENVIRONMENT) {
 
 require_once (APPLICATION_PATH . 'vendor/autoload.php');
 
-$container = \API\Container::obtemInstancia();
+use API\Container;
+use API\MyStyle;
+
+$container = Container::obtemInstancia();
 
 $mapper = $container->mapper;
-$mapper->entityNamespace = '\\API\\Entities';
+$mapper->entityNamespace = '\\API\\Entities\\';
+$mapper->setStyle(new MyStyle);
 
 $router = $container->router;
 
 // SESSAO
 $router->get(BASE_URL . "public/sessao", "\\API\\Repositories\\SessaoRepository", array(
     $container->mapper
-))->accept(array(
-    'application/json' => function ($obj) {
-        echo json_encode($obj);
-    }
 ));
 
 $router->post(BASE_URL . "public/sessao", "\\API\\Repositories\\SessaoRepository", array(
     $container->mapper
-))->accept(array(
-    'application/json' => function ($obj) {
-        echo json_encode($obj);
-    }
 ));
 
 // USUARIO
 $router->get(BASE_URL . "public/usuario/*", "\\API\\Repositories\\UsuarioRepository", array(
     $container->mapper
-))->accept(array(
-    'application/json' => function ($obj) {
-        echo json_encode($obj);
-    }
 ));
 
 $router->post(BASE_URL . "public/usuario", "\\API\\Repositories\\UsuarioRepository", array(
     $container->mapper
-))->accept(array(
-    'application/json' => function ($obj) {
-        echo json_encode($obj);
-    }
 ));
 
 // MODULO
 $router->get(BASE_URL . "public/modulo/*", "\\API\\Repositories\\ModuloRepository", array(
     $container->mapper
-))->accept(array(
-    'application/json' => function ($obj) {
-        echo json_encode($obj);
-    }
 ));
 
 $router->post(BASE_URL . "public/modulo", "\\API\\Repositories\\ModuloRepository", array(
     $container->mapper
-))->accept(array(
-    'application/json' => function ($obj) {
-        echo json_encode($obj);
-    }
 ));
 
 // ATIVIDADE
 $router->get(BASE_URL . "public/atividade/*", "\\API\\Repositories\\AtividadeRepository", array(
     $container->mapper
-))->accept(array(
-    'application/json' => function ($obj) {
-        echo json_encode($obj);
-    }
 ));
 
 $router->post(BASE_URL . "public/atividade", "\\API\\Repositories\\AtividadeRepository", array(
     $container->mapper
-))->accept(array(
-    'application/json' => function ($obj) {
-        echo json_encode($obj);
+));
+
+$router->always('Accept', array(
+    'application/json' => function ($response) {
+        return json_encode($response);
     }
 ));
 

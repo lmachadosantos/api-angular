@@ -3,8 +3,8 @@ namespace API\Entities;
 
 class Criptografia
 {
-    private $senha;
-    private $chave;
+    public $senha;
+    public $chave;
     
     public function __construct($senha, $chave = 'respostaparaavidaouniversoetudomais')
     {
