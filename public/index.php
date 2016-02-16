@@ -21,51 +21,46 @@ switch (APPLICATION_ENVIRONMENT) {
 require_once (APPLICATION_PATH . 'vendor/autoload.php');
 
 use API\Container;
-use API\MyStyle;
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\EntityManager;
 
 $container = Container::obtemInstancia();
 
-$mapper = $container->mapper;
-$mapper->entityNamespace = '\\API\\Entities\\';
-$mapper->setStyle(new MyStyle);
+$paths = array(APPLICATION_PATH . "src/Entities");
+$isDevMode = false;
+
+$dbParams = array(
+    'host'     => '192.168.20.110',
+    'driver'   => 'pdo_mysql',
+    'user'     => 'root',
+    'password' => '',
+    'dbname'   => 'angular',
+);
+
+$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+$entityManager = EntityManager::create($dbParams, $config);
 
 $router = $container->router;
 
 // SESSAO
-$router->get(BASE_URL . "public/sessao", "\\API\\Repositories\\SessaoRepository", array(
-    $container->mapper
-));
+$router->get(BASE_URL . "public/sessao", "\\API\\Repositories\\SessaoRepository");
 
-$router->post(BASE_URL . "public/sessao", "\\API\\Repositories\\SessaoRepository", array(
-    $container->mapper
-));
+$router->post(BASE_URL . "public/sessao", "\\API\\Repositories\\SessaoRepository");
 
 // USUARIO
-$router->get(BASE_URL . "public/usuario/*", "\\API\\Repositories\\UsuarioRepository", array(
-    $container->mapper
-));
+$router->get(BASE_URL . "public/usuario/*", "\\API\\Repositories\\UsuarioRepository");
 
-$router->post(BASE_URL . "public/usuario", "\\API\\Repositories\\UsuarioRepository", array(
-    $container->mapper
-));
+$router->post(BASE_URL . "public/usuario", "\\API\\Repositories\\UsuarioRepository");
 
 // MODULO
-$router->get(BASE_URL . "public/modulo/*", "\\API\\Repositories\\ModuloRepository", array(
-    $container->mapper
-));
+$router->get(BASE_URL . "public/modulo/*", "\\API\\Repositories\\ModuloRepository");
 
-$router->post(BASE_URL . "public/modulo", "\\API\\Repositories\\ModuloRepository", array(
-    $container->mapper
-));
+$router->post(BASE_URL . "public/modulo", "\\API\\Repositories\\ModuloRepository");
 
 // ATIVIDADE
-$router->get(BASE_URL . "public/atividade/*", "\\API\\Repositories\\AtividadeRepository", array(
-    $container->mapper
-));
+$router->get(BASE_URL . "public/atividade/*", "\\API\\Repositories\\AtividadeRepository");
 
-$router->post(BASE_URL . "public/atividade", "\\API\\Repositories\\AtividadeRepository", array(
-    $container->mapper
-));
+$router->post(BASE_URL . "public/atividade", "\\API\\Repositories\\AtividadeRepository");
 
 $router->always('Accept', array(
     'application/json' => function ($response) {

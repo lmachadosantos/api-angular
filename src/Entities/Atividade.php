@@ -1,18 +1,20 @@
 <?php
 namespace API\Entities;
-
+/**
+ * @Entity
+ * @Table(name="atividade")
+ */
 class Atividade
 {
-
-    public $id;
-
+    private $id;
+    
     private $moduloId;
+    
+    private $titulo;
 
-    public $titulo;
+    private $descricao;
 
-    public $descricao;
-
-    public $ativo;
+    private $ativo;
 
     private $criadoEm;
 

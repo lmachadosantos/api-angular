@@ -3,22 +3,15 @@ namespace API\Repositories;
 
 use stdClass;
 use Respect\Rest\Routable;
-use Respect\Relational\Mapper;
 use API\Entities\Atividade;
 use API\Repositories\ModuloRepository;
 
 class AtividadeRepository implements Routable
 {
 
-    private $mapper;
-
-    public function __construct(Mapper $mapper)
-    {
-        $this->mapper = $mapper;
-    }
-
     public function get($id = null)
-    {           
+    {    
+        /*
         if ($id) {
             $stmt = $this->mapper->atividade(array(
                 'id' => "{$id}",
@@ -44,8 +37,9 @@ class AtividadeRepository implements Routable
                 $atividade = $stmt->fetchAll();
             }
         }
-
-        return $atividade;
+        */
+        
+        return $article = $entityManager->find('CMS\Article', 1234);
     }
 
     public function post()
